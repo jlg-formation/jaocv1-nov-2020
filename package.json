@@ -1,0 +1,11 @@
+{
+  "name": "tp",
+  "version": "1.0.0",
+  "description": "TP pour la formation JAO (Javascript)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jean-Louis GUENEGO",
+  "license": "ISC"
+}
