@@ -50,8 +50,14 @@ function addLine(n1, n2, c) {
   line.setAttributeNS(null, "x2", p2.x);
   line.setAttributeNS(null, "y2", p2.y);
   line.setAttributeNS(null, "stroke", "blue");
-  line.setAttributeNS(null, "stroke-width", "3");
+  line.setAttributeNS(null, "stroke-width", "1");
   svg.appendChild(line);
+}
+
+function addLines(c) {
+  for (let i = 0; i < c.nbr; i++) {
+    addLine(i, i * c.multi, c);
+  }
 }
 
 function main() {
@@ -60,10 +66,11 @@ function main() {
     r: 200,
     cx: 400,
     cy: 250,
-    nbr: 10,
+    nbr: 500,
+    multi: 40,
   };
   addSmallCircles(c);
-  addLine(0, 3, c);
+  addLines(c);
 }
 
 main();
