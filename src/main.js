@@ -62,15 +62,24 @@ function addLines(c) {
 
 function init(c) {
   const rangeElt = document.querySelector("input[type=range][name=nbr]");
-  rangeElt.addEventListener("input", (evt) => syncNbr(c));
+  rangeElt.addEventListener("input", (evt) => sync(c));
+
+  const checkboxElt = document.querySelector(
+    "input[type=checkbox][name=showText]"
+  );
+  checkboxElt.addEventListener("input", (evt) => sync(c));
 }
 
-function syncNbr(c) {
+function sync(c) {
   const rangeElt = document.querySelector("input[type=range][name=nbr]");
+  const checkboxElt = document.querySelector(
+    "input[type=checkbox][name=showText]"
+  );
   const divElt = document.querySelector("#nbr");
   divElt.innerHTML = rangeElt.value;
 
   c.nbr = +rangeElt.value;
+  c.showText = checkboxElt.checked;
   draw(c);
 }
 
@@ -78,8 +87,11 @@ function draw(c) {
   reset();
   console.log("start");
 
-  addSmallCircles(c);
   addLines(c);
+
+  if (c.showText) {
+    addSmallCircles(c);
+  }
 }
 
 function reset() {
@@ -98,9 +110,10 @@ function main() {
     cy: 250,
     nbr: 500,
     multi: 40,
+    showText: true,
   };
   init(c);
-  syncNbr(c);
+  sync(c);
 }
 
 main();
