@@ -19,16 +19,13 @@ function addSmallCircles(c) {
 
 function addLine(n1, n2, c) {
   const svg = document.querySelector("svg");
-  // const angle1 = (i * (Math.PI * 2)) / c.nbr;
-  // const angle2 = (i * (Math.PI * 2)) / c.nbr;
-  // const x = c.cx + c.r * Math.cos(angle);
-  // const y = c.cy + c.r * Math.sin(angle);
-  // const circle = document.createElementNS(SVGNS, "circle");
+  const angle1 = (n1 * (Math.PI * 2)) / c.nbr;
+  const angle2 = (n2 * (Math.PI * 2)) / c.nbr;
 
-  const x1 = 10;
-  const y1 = 20;
-  const x2 = 30;
-  const y2 = 50;
+  const x1 = c.cx + c.r * Math.cos(angle1);
+  const y1 = c.cy + c.r * Math.sin(angle1);
+  const x2 = c.cx + c.r * Math.cos(angle2);
+  const y2 = c.cy + c.r * Math.sin(angle2);
   const line = document.createElementNS(SVGNS, "line");
   line.setAttributeNS(null, "x1", x1);
   line.setAttributeNS(null, "y1", y1);
@@ -48,7 +45,7 @@ function main() {
     nbr: 10,
   };
   addSmallCircles(c);
-  addLine(3, 7, c);
+  addLine(0, 3, c);
 }
 
 main();
