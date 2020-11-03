@@ -10,7 +10,7 @@ function getPoint(n, c) {
 }
 
 function addSmallCircles(c) {
-  const svg = document.querySelector("svg");
+  const g = document.querySelector("svg g.draw");
   for (let i = 0; i < c.nbr; i++) {
     const { x, y } = getPoint(i, c);
 
@@ -21,7 +21,7 @@ function addSmallCircles(c) {
     circle.setAttributeNS(null, "fill", "black");
     circle.setAttributeNS(null, "stroke", "black");
     circle.setAttributeNS(null, "stroke-width", "3");
-    svg.appendChild(circle);
+    g.appendChild(circle);
 
     const p = getPoint(i, {
       r: c.r + 30,
@@ -36,12 +36,12 @@ function addSmallCircles(c) {
     text.setAttributeNS(null, "fill", "black");
     text.setAttributeNS(null, "text-anchor", "middle");
     text.appendChild(document.createTextNode(i));
-    svg.appendChild(text);
+    g.appendChild(text);
   }
 }
 
 function addLine(n1, n2, c) {
-  const svg = document.querySelector("svg");
+  const g = document.querySelector("svg g.draw");
   const p1 = getPoint(n1, c);
   const p2 = getPoint(n2, c);
   const line = document.createElementNS(SVGNS, "line");
@@ -51,7 +51,7 @@ function addLine(n1, n2, c) {
   line.setAttributeNS(null, "y2", p2.y);
   line.setAttributeNS(null, "stroke", "blue");
   line.setAttributeNS(null, "stroke-width", "1");
-  svg.appendChild(line);
+  g.appendChild(line);
 }
 
 function addLines(c) {
@@ -67,6 +67,15 @@ function syncNbr() {
   rangeElt.addEventListener("input", syncNbr);
 }
 
+function reset() {
+  const g = document.querySelector("svg g.draw");
+  const svg = g.parentElement;
+  g.remove();
+  const newG = document.createElementNS(SVGNS, "g");
+  newG.setAttributeNS(null, "class", "draw");
+  svg.appendChild(newG);
+}
+
 function main() {
   console.log("start");
   const c = {
@@ -78,6 +87,7 @@ function main() {
   };
   addSmallCircles(c);
   addLines(c);
+  reset();
 
   syncNbr();
 }
