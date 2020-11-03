@@ -6,3 +6,19 @@ label {
   padding-top: 3em;
   display: block;
 }
+
+line {
+  stroke: blue;
+  stroke-width: 1;
+}
+
+.draw circle {
+  fill: black;
+  stroke: black;
+  stroke-width: 3;
+}
+
+.draw text {
+  text-anchor: middle;
+  fill: black;
+}

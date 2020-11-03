@@ -18,10 +18,11 @@ function addSmallCircles(c) {
     circle.setAttributeNS(null, "cx", x);
     circle.setAttributeNS(null, "cy", y);
     circle.setAttributeNS(null, "r", 5);
-    circle.setAttributeNS(null, "fill", "black");
-    circle.setAttributeNS(null, "stroke", "black");
-    circle.setAttributeNS(null, "stroke-width", "3");
+    // circle.setAttributeNS(null, "fill", "black");
+    // circle.setAttributeNS(null, "stroke", "black");
+    // circle.setAttributeNS(null, "stroke-width", "3");
     g.appendChild(circle);
+    console.log("circle %O", circle);
 
     const p = getPoint(i, {
       r: c.r + 30,
@@ -33,8 +34,8 @@ function addSmallCircles(c) {
     const text = document.createElementNS(SVGNS, "text");
     text.setAttributeNS(null, "x", p.x);
     text.setAttributeNS(null, "y", p.y);
-    text.setAttributeNS(null, "fill", "black");
-    text.setAttributeNS(null, "text-anchor", "middle");
+    // text.setAttributeNS(null, "fill", "black");
+    // text.setAttributeNS(null, "text-anchor", "middle");
     text.appendChild(document.createTextNode(i));
     g.appendChild(text);
   }
@@ -49,8 +50,8 @@ function addLine(n1, n2, c) {
   line.setAttributeNS(null, "y1", p1.y);
   line.setAttributeNS(null, "x2", p2.x);
   line.setAttributeNS(null, "y2", p2.y);
-  line.setAttributeNS(null, "stroke", "blue");
-  line.setAttributeNS(null, "stroke-width", "1");
+  // line.setAttributeNS(null, "stroke", "blue");
+  // line.setAttributeNS(null, "stroke-width", "1");
   g.appendChild(line);
 }
 
