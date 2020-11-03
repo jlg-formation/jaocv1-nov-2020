@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Multiplication circulaire</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>Multiplication circulaire</h1>
@@ -16,8 +17,9 @@
         stroke-width="3"
         fill="transparent"
       />
-      <text x="0" y="15" fill="red">I love SVG!</text>
     </svg>
+    <input type="range" name="nbr" value="20" min="2" max="100" step="1" />
+    <div>{{ nbr }}</div>
     <script src="main.js"></script>
   </body>
 </html>
