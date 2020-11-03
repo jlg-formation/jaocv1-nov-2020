@@ -17,6 +17,27 @@ function addSmallCircles(nbr, c) {
   }
 }
 
+function addLine(n1, n2) {
+  const svg = document.querySelector("svg");
+  // const angle = (i * (Math.PI * 2)) / nbr;
+  // const x = c.cx + c.r * Math.cos(angle);
+  // const y = c.cy + c.r * Math.sin(angle);
+  // const circle = document.createElementNS(SVGNS, "circle");
+
+  const x1 = 10;
+  const y1 = 20;
+  const x2 = 30;
+  const y2 = 50;
+  const line = document.createElementNS(SVGNS, "line");
+  line.setAttributeNS(null, "x1", x1);
+  line.setAttributeNS(null, "y1", y1);
+  line.setAttributeNS(null, "x2", x2);
+  line.setAttributeNS(null, "y2", y2);
+  line.setAttributeNS(null, "stroke", "blue");
+  line.setAttributeNS(null, "stroke-width", "3");
+  svg.appendChild(line);
+}
+
 function main() {
   console.log("start");
   addSmallCircles(10, {
@@ -24,6 +45,7 @@ function main() {
     cx: 400,
     cy: 250,
   });
+  addLine(3, 7);
 }
 
 main();
