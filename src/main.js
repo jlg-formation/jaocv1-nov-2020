@@ -60,11 +60,30 @@ function addLines(c) {
   }
 }
 
+const c = {
+  r: 200,
+  cx: 400,
+  cy: 250,
+  nbr: 500,
+  multi: 40,
+};
+
 function syncNbr() {
   const rangeElt = document.querySelector("input[type=range][name=nbr]");
   const divElt = document.querySelector("#nbr");
   divElt.innerHTML = rangeElt.value;
   rangeElt.addEventListener("input", syncNbr);
+
+  c.nbr = +rangeElt.value;
+  draw(c);
+}
+
+function draw(c) {
+  reset();
+  console.log("start");
+
+  addSmallCircles(c);
+  addLines(c);
 }
 
 function reset() {
@@ -77,18 +96,6 @@ function reset() {
 }
 
 function main() {
-  console.log("start");
-  const c = {
-    r: 200,
-    cx: 400,
-    cy: 250,
-    nbr: 500,
-    multi: 40,
-  };
-  addSmallCircles(c);
-  addLines(c);
-  reset();
-
   syncNbr();
 }
 
