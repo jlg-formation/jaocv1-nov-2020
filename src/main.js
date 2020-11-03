@@ -60,6 +60,13 @@ function addLines(c) {
   }
 }
 
+function syncNbr() {
+  const rangeElt = document.querySelector("input[type=range][name=nbr]");
+  const divElt = document.querySelector("#nbr");
+  divElt.innerHTML = rangeElt.value;
+  rangeElt.addEventListener("input", syncNbr);
+}
+
 function main() {
   console.log("start");
   const c = {
@@ -71,6 +78,8 @@ function main() {
   };
   addSmallCircles(c);
   addLines(c);
+
+  syncNbr();
 }
 
 main();
