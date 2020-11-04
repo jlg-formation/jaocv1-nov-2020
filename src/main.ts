@@ -14,4 +14,6 @@ function main() {
   sync(c);
 }
 
+// start
+
 main();

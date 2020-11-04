@@ -16,6 +16,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "src/index.html",
+      cache: false,
     }),
     new CopyPlugin({
       patterns: [{ from: "src/style.css", to: "style.css" }],
