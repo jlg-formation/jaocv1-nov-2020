@@ -9,6 +9,7 @@
   "author": "Jean-Louis GUENEGO",
   "license": "ISC",
   "dependencies": {
+    "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.3.0",
     "html-webpack-plugin": "^4.5.0",
     "webpack": "^5.4.0",
