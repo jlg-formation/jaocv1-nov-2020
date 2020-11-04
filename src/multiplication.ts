@@ -90,8 +90,6 @@ function addLine(n1: number, n2: number, c: Config) {
   setAttr(line, "y1", p1.y);
   setAttr(line, "x2", p2.x);
   setAttr(line, "y2", p2.y);
-  // line.setAttributeNS(null, "stroke", "blue");
-  // line.setAttributeNS(null, "stroke-width", "1");
   g.appendChild(line);
 }
 
