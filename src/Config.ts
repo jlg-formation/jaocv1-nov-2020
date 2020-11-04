@@ -1,8 +1,6 @@
-interface Config {
-  r: number;
-  cx: number;
-  cy: number;
-  nbr: number;
-  multi?: number;
-  showText?: boolean;
+import { Circle } from "./Circle";
+
+export interface Config extends Circle {
+  multi: number;
+  showText: boolean;
 }

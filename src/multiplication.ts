@@ -1,33 +1,33 @@
+import { Config } from "./Config";
 import { getPoint } from "./math";
+import { querySelector } from "./utils";
 
 const SVGNS = "http://www.w3.org/2000/svg";
 
 export function init(c: Config) {
-  const rangeNbrElt = document.querySelector("input[type=range][name=nbr]");
+  const rangeNbrElt = querySelector("input[type=range][name=nbr]");
   rangeNbrElt.addEventListener("input", (evt) => sync(c));
 
-  const rangeMultiElt = document.querySelector("input[type=range][name=multi]");
+  const rangeMultiElt = querySelector("input[type=range][name=multi]");
   rangeMultiElt.addEventListener("input", (evt) => sync(c));
 
-  const checkboxElt = document.querySelector(
-    "input[type=checkbox][name=showText]"
-  );
+  const checkboxElt = querySelector("input[type=checkbox][name=showText]");
   checkboxElt.addEventListener("input", (evt) => sync(c));
 }
 
 export function sync(c: Config) {
-  const rangeElt = document.querySelector<HTMLInputElement>(
+  const rangeElt = querySelector<HTMLInputElement>(
     "input[type=range][name=nbr]"
   );
-  const rangeMultiElt = document.querySelector<HTMLInputElement>(
+  const rangeMultiElt = querySelector<HTMLInputElement>(
     "input[type=range][name=multi]"
   );
-  const checkboxElt = document.querySelector<HTMLInputElement>(
+  const checkboxElt = querySelector<HTMLInputElement>(
     "input[type=checkbox][name=showText]"
   );
-  const divElt = document.querySelector("#nbr");
+  const divElt = querySelector("#nbr");
   divElt.innerHTML = rangeElt.value;
-  const divMultiElt = document.querySelector("#multi");
+  const divMultiElt = querySelector("#multi");
   divMultiElt.innerHTML = rangeMultiElt.value;
 
   c.nbr = +rangeElt.value;
@@ -47,16 +47,16 @@ function draw(c: Config) {
 }
 
 function reset() {
-  const g = document.querySelector("svg g.draw");
+  const g = querySelector("svg g.draw");
   const svg = g.parentElement;
   g.remove();
   const newG = document.createElementNS(SVGNS, "g");
   newG.setAttributeNS(null, "class", "draw");
-  svg.appendChild(newG);
+  svg?.appendChild(newG);
 }
 
 function addSmallCircles(c: Config) {
-  const g = document.querySelector("svg g.draw");
+  const g = querySelector("svg g.draw");
   for (let i = 0; i < c.nbr; i++) {
     const { x, y } = getPoint(i, c);
 
@@ -84,7 +84,7 @@ function addSmallCircles(c: Config) {
 }
 
 function addLine(n1: number, n2: number, c: Config) {
-  const g = document.querySelector("svg g.draw");
+  const g = querySelector("svg g.draw");
   const p1 = getPoint(n1, c);
   const p2 = getPoint(n2, c);
   const line = document.createElementNS(SVGNS, "line");
