@@ -1,4 +1,4 @@
-import { getPoint } from "./math.js";
+import { getPoint } from "./math";
 
 const SVGNS = "http://www.w3.org/2000/svg";
 
@@ -34,7 +34,6 @@ export function sync(c) {
 
 function draw(c) {
   reset();
-  console.log("start");
 
   addLines(c);
 
@@ -65,7 +64,6 @@ function addSmallCircles(c) {
     // circle.setAttributeNS(null, "stroke", "black");
     // circle.setAttributeNS(null, "stroke-width", "3");
     g.appendChild(circle);
-    console.log("circle %O", circle);
 
     const p = getPoint(i, {
       r: c.r + 30,

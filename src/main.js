@@ -1,4 +1,4 @@
-import { init, sync } from "./multiplication.js";
+import { init, sync } from "./multiplication";
 
 function main() {
   const c = {
