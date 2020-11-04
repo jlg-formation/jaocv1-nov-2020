@@ -1,6 +1,6 @@
 import { Config } from "./Config";
 import { getPoint } from "./math";
-import { querySelector } from "./utils";
+import { querySelector, setAttr } from "./utils";
 
 const SVGNS = "http://www.w3.org/2000/svg";
 
@@ -61,9 +61,9 @@ function addSmallCircles(c: Config) {
     const { x, y } = getPoint(i, c);
 
     const circle = document.createElementNS(SVGNS, "circle");
-    circle.setAttributeNS(null, "cx", x + "");
-    circle.setAttributeNS(null, "cy", y + "");
-    circle.setAttributeNS(null, "r", "5");
+    setAttr(circle, "cx", x);
+    setAttr(circle, "cy", y);
+    setAttr(circle, "r", 5);
     g.appendChild(circle);
 
     const p = getPoint(i, {
@@ -74,10 +74,8 @@ function addSmallCircles(c: Config) {
     });
 
     const text = document.createElementNS(SVGNS, "text");
-    text.setAttributeNS(null, "x", p.x + "");
-    text.setAttributeNS(null, "y", p.y + "");
-    // text.setAttributeNS(null, "fill", "black");
-    // text.setAttributeNS(null, "text-anchor", "middle");
+    setAttr(text, "x", p.x);
+    setAttr(text, "y", p.y);
     text.appendChild(document.createTextNode(i + ""));
     g.appendChild(text);
   }
@@ -88,10 +86,10 @@ function addLine(n1: number, n2: number, c: Config) {
   const p1 = getPoint(n1, c);
   const p2 = getPoint(n2, c);
   const line = document.createElementNS(SVGNS, "line");
-  line.setAttributeNS(null, "x1", p1.x + "");
-  line.setAttributeNS(null, "y1", p1.y + "");
-  line.setAttributeNS(null, "x2", p2.x + "");
-  line.setAttributeNS(null, "y2", p2.y + "");
+  setAttr(line, "x1", p1.x);
+  setAttr(line, "y1", p1.y);
+  setAttr(line, "x2", p2.x);
+  setAttr(line, "y2", p2.y);
   // line.setAttributeNS(null, "stroke", "blue");
   // line.setAttributeNS(null, "stroke-width", "1");
   g.appendChild(line);

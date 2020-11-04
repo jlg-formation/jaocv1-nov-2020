@@ -5,3 +5,7 @@ export function querySelector<T extends Element>(selector: string): T {
   }
   return result;
 }
+
+export function setAttr(elt: Element, prop: string, value: number | string) {
+  elt.setAttributeNS(null, prop, value + "");
+}
