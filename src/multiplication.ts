@@ -2,7 +2,7 @@ import { getPoint } from "./math";
 
 const SVGNS = "http://www.w3.org/2000/svg";
 
-export function init(c) {
+export function init(c: Config) {
   const rangeNbrElt = document.querySelector("input[type=range][name=nbr]");
   rangeNbrElt.addEventListener("input", (evt) => sync(c));
 
@@ -15,10 +15,14 @@ export function init(c) {
   checkboxElt.addEventListener("input", (evt) => sync(c));
 }
 
-export function sync(c) {
-  const rangeElt = document.querySelector("input[type=range][name=nbr]");
-  const rangeMultiElt = document.querySelector("input[type=range][name=multi]");
-  const checkboxElt = document.querySelector(
+export function sync(c: Config) {
+  const rangeElt = document.querySelector<HTMLInputElement>(
+    "input[type=range][name=nbr]"
+  );
+  const rangeMultiElt = document.querySelector<HTMLInputElement>(
+    "input[type=range][name=multi]"
+  );
+  const checkboxElt = document.querySelector<HTMLInputElement>(
     "input[type=checkbox][name=showText]"
   );
   const divElt = document.querySelector("#nbr");
@@ -32,7 +36,7 @@ export function sync(c) {
   draw(c);
 }
 
-function draw(c) {
+function draw(c: Config) {
   reset();
 
   addLines(c);
@@ -51,18 +55,15 @@ function reset() {
   svg.appendChild(newG);
 }
 
-function addSmallCircles(c) {
+function addSmallCircles(c: Config) {
   const g = document.querySelector("svg g.draw");
   for (let i = 0; i < c.nbr; i++) {
     const { x, y } = getPoint(i, c);
 
     const circle = document.createElementNS(SVGNS, "circle");
-    circle.setAttributeNS(null, "cx", x);
-    circle.setAttributeNS(null, "cy", y);
-    circle.setAttributeNS(null, "r", 5);
-    // circle.setAttributeNS(null, "fill", "black");
-    // circle.setAttributeNS(null, "stroke", "black");
-    // circle.setAttributeNS(null, "stroke-width", "3");
+    circle.setAttributeNS(null, "cx", x + "");
+    circle.setAttributeNS(null, "cy", y + "");
+    circle.setAttributeNS(null, "r", "5");
     g.appendChild(circle);
 
     const p = getPoint(i, {
@@ -73,30 +74,30 @@ function addSmallCircles(c) {
     });
 
     const text = document.createElementNS(SVGNS, "text");
-    text.setAttributeNS(null, "x", p.x);
-    text.setAttributeNS(null, "y", p.y);
+    text.setAttributeNS(null, "x", p.x + "");
+    text.setAttributeNS(null, "y", p.y + "");
     // text.setAttributeNS(null, "fill", "black");
     // text.setAttributeNS(null, "text-anchor", "middle");
-    text.appendChild(document.createTextNode(i));
+    text.appendChild(document.createTextNode(i + ""));
     g.appendChild(text);
   }
 }
 
-function addLine(n1, n2, c) {
+function addLine(n1: number, n2: number, c: Config) {
   const g = document.querySelector("svg g.draw");
   const p1 = getPoint(n1, c);
   const p2 = getPoint(n2, c);
   const line = document.createElementNS(SVGNS, "line");
-  line.setAttributeNS(null, "x1", p1.x);
-  line.setAttributeNS(null, "y1", p1.y);
-  line.setAttributeNS(null, "x2", p2.x);
-  line.setAttributeNS(null, "y2", p2.y);
+  line.setAttributeNS(null, "x1", p1.x + "");
+  line.setAttributeNS(null, "y1", p1.y + "");
+  line.setAttributeNS(null, "x2", p2.x + "");
+  line.setAttributeNS(null, "y2", p2.y + "");
   // line.setAttributeNS(null, "stroke", "blue");
   // line.setAttributeNS(null, "stroke-width", "1");
   g.appendChild(line);
 }
 
-function addLines(c) {
+function addLines(c: Config) {
   for (let i = 0; i < c.nbr; i++) {
     addLine(i, i * c.multi, c);
   }
